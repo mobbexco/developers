@@ -15,23 +15,23 @@ Para crear un checkout es necesario poseer un API Key y un Access Token. Para ob
 Habiendo obtenido ambos keys se puede proceder a generar la solicitud para crear un Checkout. Algunos ejemplos a continuación.
 
 #### Cabeceras (Headers)
-- ___x-api-key___: Clave API de su aplicación
-- ___x-access-token___: Token de Acceso a la entidad para la cual desea realizar la operación.
+- ___x-api-key___: Clave API de su aplicación<br/>
+- ___x-access-token___: Token de Acceso a la entidad para la cual desea realizar la operación.<br/>
 
 #### Parametros (POST Params)
 
 __Requeridos__
-- ___total___ (Número: XXX.xx) Monto de la operación. Formato XXX.xx donde el ___PUNTO___ es el separador decimal.
-- ___description___ (Texto hasta 255 caracteres) Descripción de la operación que será mostrada en el Checkout.
-- ___return_url___ (FQDN) URL para retornar una vez finalizada la operación o si el usuario desea cancelar la misma.
-- ___reference___ (Texto) Es una referencia que no será mostrada pero que le será útil para reconocer la operación en su sistema.
+- ___total___ (Número: XXX.xx) Monto de la operación. Formato XXX.xx donde el ___PUNTO___ es el separador decimal.<br/>
+- ___description___ (Texto hasta 255 caracteres) Descripción de la operación que será mostrada en el Checkout.<br/>
+- ___return_url___ (FQDN) URL para retornar una vez finalizada la operación o si el usuario desea cancelar la misma.<br/>
+- ___reference___ (Texto) Es una referencia que no será mostrada pero que le será útil para reconocer la operación en su sistema.<br/>
 
 __Opcionales__
-- ___webhook___ (FQDN compatible con POST) URL que será invocada por Mobbex al finalizar la operación mediante __POST__ y que recibirá todos los detalles sobre la operación procesada. El Webhook será invocado antes de realizarse la redirección. Tenga en cuenta que la URL utilizada debe ser capaz de recibir una llamada de Tipo POST de lo contrario Mobbex no será capaz de informarle sobre la misma.
-- ___redirect___ (Boolean: true/false) permite la redirección automática al checkout al terminar la ejecución del POST sin intervención del usuario. (Por defecto es falso y siempre retorna la URL )
+- ___webhook___ (FQDN compatible con POST) URL que será invocada por Mobbex al finalizar la operación mediante __POST__ y que recibirá todos los detalles sobre la operación procesada. El Webhook será invocado antes de realizarse la redirección. Tenga en cuenta que la URL utilizada debe ser capaz de recibir una llamada de Tipo POST de lo contrario Mobbex no será capaz de informarle sobre la misma.<br/>
+- ___redirect___ (Boolean: true/false) permite la redirección automática al checkout al terminar la ejecución del POST sin intervención del usuario. (Por defecto es falso y siempre retorna la URL )<br/>
 
 __CURL__
-```
+<pre><code>
 curl --request POST \
   --url https://mobbex.com/p/checkout/create \
   --header 'cache-control: no-cache' \
@@ -42,10 +42,10 @@ curl --request POST \
   --form 'reference=#MyImportantID' \
   --form 'description=Some Description' \
   --form return_url=https://mobbex.com/finished
-```
+</code></pre>
 
 __Javascript__
-```javascript
+<pre><code>
 var data = new FormData();
 data.append("total", "100");
 data.append("reference", "#MyImportantID");
@@ -63,10 +63,10 @@ xhr.setRequestHeader("x-api-key", "zJ8LFTBX6Ba8D611e9io13fDZAwj0QmKO1Hn1yIj");
 xhr.setRequestHeader("x-access-token", "d31f0721-2f85-44e7-bcc6-15e19d1a53cc");
 xhr.setRequestHeader("cache-control", "no-cache");
 xhr.send(data);
-```
+</code></pre>
 
 __PHP__
-```php
+<pre><code>
 <?php  
 $request = new HttpRequest();
 $request->setUrl('https://mobbex.com/p/checkout/create');
@@ -91,14 +91,14 @@ try {
 } catch (HttpException $ex) {
   echo $ex;
 }
-```
+</code></pre>
 
 #### Respuesta: 
 
 Tenga en cuenta que las respuestas del servicio siempre serán en formato JSON. El servicio sólo contestará si __redirect__ no fue utilizado o si el mismo se colocó en "false"
 
 __JSON__
-```json
+<pre><code>
 {
   "result": true,
   "data": {
@@ -108,7 +108,7 @@ __JSON__
     "total": 100
   }
 }
-```
+</code></pre>
 
 Como desarrollador deberá redireccionar el sitio web a la url proporcionada en la respuesta de nuestro servicio.
 
