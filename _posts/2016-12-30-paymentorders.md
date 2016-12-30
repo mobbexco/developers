@@ -26,16 +26,16 @@ https://mobbex.com/p/payment_order/create
 
 #### Parametros (POST Params)
 
-_Requeridos_
-- ___total___: Monto de la operación. Formato XXX.xx donde el ___PUNTO___ es el separador decimal.
-- ___description___: Descripción de la operación que será mostrada en el Checkout.
-- ___email___: El email al cual será enviada la orden de pago generada.
+_Requeridos_<br/>
+- ___total___: Monto de la operación. Formato XXX.xx donde el ___PUNTO___ es el separador decimal.<br/>
+- ___description___: Descripción de la operación que será mostrada en el Checkout.<br/>
+- ___email___: El email al cual será enviada la orden de pago generada.<br/>
 
-_Opcionales_
-- ___capture___: este parámetro permite generar una orden de pago en modo Autorización, las ordenes de pago del tipo Autorización deberán ser capturadas desde el panel administrativo. (Defecto: true)
+_Opcionales_<br/>
+- ___capture___: este parámetro permite generar una orden de pago en modo Autorización, las ordenes de pago del tipo Autorización deberán ser capturadas desde el panel administrativo. (Defecto: true)<br/>
 
 __CURL__
-```
+<pre><code>
 curl --request POST \
   --url https://mobbex.com/p/payment_order/create \
   --header 'cache-control: no-cache' \
@@ -45,10 +45,10 @@ curl --request POST \
   --form total=100 \
   --form 'email=some@email.com' \
   --form 'description=Some Description'
-```
+</code></pre>
 
 __Javascript__
-```javascript
+<pre><code>
 var data = new FormData();
 data.append("total", "100");
 data.append("email", "some@email.com");
@@ -65,10 +65,10 @@ xhr.setRequestHeader("x-api-key", "zJ8LFTBX6Ba8D611e9io13fDZAwj0QmKO1Hn1yIj");
 xhr.setRequestHeader("x-access-token", "d31f0721-2f85-44e7-bcc6-15e19d1a53cc");
 xhr.setRequestHeader("cache-control", "no-cache");
 xhr.send(data);
-```
+</code></pre>
 
 __PHP__
-```php
+<pre><code>
 <?php  
 $request = new HttpRequest();
 $request->setUrl('https://mobbex.com/p/payment_order/create');
@@ -92,14 +92,14 @@ try {
 } catch (HttpException $ex) {
   echo $ex;
 }
-```
+</code></pre>
 
 #### Respuesta: 
 
 Tenga en cuenta que las respuestas del servicio siempre serán en formato JSON.
 
 __JSON__
-```json
+<pre><code>
 {
   "__v": 0,
   "identifier": "some-description",
@@ -113,5 +113,5 @@ __JSON__
   "uid": "SJMHEKxSl",
   "_id": "5863043abfa789000f941f58"
 }
-```
+</code></pre>
 </div>

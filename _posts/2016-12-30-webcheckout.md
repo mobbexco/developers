@@ -20,13 +20,13 @@ Habiendo obtenido ambos keys se puede proceder a generar la solicitud para crear
 
 #### Parametros (POST Params)
 
-__Requeridos__
+__Requeridos__<br/>
 - ___total___ (Número: XXX.xx) Monto de la operación. Formato XXX.xx donde el ___PUNTO___ es el separador decimal.<br/>
 - ___description___ (Texto hasta 255 caracteres) Descripción de la operación que será mostrada en el Checkout.<br/>
 - ___return_url___ (FQDN) URL para retornar una vez finalizada la operación o si el usuario desea cancelar la misma.<br/>
 - ___reference___ (Texto) Es una referencia que no será mostrada pero que le será útil para reconocer la operación en su sistema.<br/>
 
-__Opcionales__
+__Opcionales__<br/>
 - ___webhook___ (FQDN compatible con POST) URL que será invocada por Mobbex al finalizar la operación mediante __POST__ y que recibirá todos los detalles sobre la operación procesada. El Webhook será invocado antes de realizarse la redirección. Tenga en cuenta que la URL utilizada debe ser capaz de recibir una llamada de Tipo POST de lo contrario Mobbex no será capaz de informarle sobre la misma.<br/>
 - ___redirect___ (Boolean: true/false) permite la redirección automática al checkout al terminar la ejecución del POST sin intervención del usuario. (Por defecto es falso y siempre retorna la URL )<br/>
 
