@@ -119,4 +119,4 @@ Si se define el parámetro ```return_url``` el servicio redireccionará a la URL
 Ejemplo:
 ```https://mobbex.com/thank_you?status=200```
 
-Referencia de los Estados posibles: <a href="/statuses">Estados</a>
+Referencia de los Estados posibles: <a href="{{ "statuses" | absolute_url }}">Estados</a>

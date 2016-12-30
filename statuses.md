@@ -16,18 +16,20 @@ title: Estados
 <div markdown="1">
 Estados de una transacción en Mobbex:
 
-```0``` Sin Estado <br/>
-```1``` Pendiente  <br/>
-```2``` En Espera*  <br/>
-```3``` Autorizada*  <br/>
-```200``` Paga  <br/>
-```300```	Completada  <br/>
-```301``` Liquidada  <br/>
-```400``` Declinada  <br/>
-```401``` Expirada  <br/>
-```600``` Cancelación en proceso  <br/>
-```601``` Cancelada  <br/>
-```500``` Error  <br/>
+| Código de Estado | Especificación |  
+| --- | --- |  
+| 0 | Sin Estado |  
+| 1 | Pendiente |  
+| 2 | En Espera* |  
+| 3 | Autorizada* |  
+| 200 | Paga |  
+| 300 | Completada |  
+| 301 | Liquidada |  
+| 400 | Declinada |  
+| 401 | Expirada |  
+| 600 | Cancelación en proceso |  
+| 601 | Cancelada |  
+| 500 | Error |  
 
 ___* Aclaraciones___<br/>
 __En Espera__: suele utilizarse para operaciones de tipo Efectivo que están a la espera de su pago.<br/>
