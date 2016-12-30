@@ -82,28 +82,29 @@
 
 <h4 id="cabeceras-headers">Cabeceras (Headers)</h4>
 <ul>
-  <li><strong><em>x-api-key</em></strong>: Clave API de su aplicación</li>
-  <li><strong><em>x-access-token</em></strong>: Token de Acceso a la entidad para la cual desea realizar la operación.</li>
+  <li><strong><em>x-api-key</em></strong>: Clave API de su aplicación<br /></li>
+  <li><strong><em>x-access-token</em></strong>: Token de Acceso a la entidad para la cual desea realizar la operación.<br /></li>
 </ul>
 
 <h4 id="parametros-post-params">Parametros (POST Params)</h4>
 
-<p><strong>Requeridos</strong></p>
+<p><strong>Requeridos</strong><br /></p>
 <ul>
-  <li><strong><em>total</em></strong> (Número: XXX.xx) Monto de la operación. Formato XXX.xx donde el <strong><em>PUNTO</em></strong> es el separador decimal.</li>
-  <li><strong><em>description</em></strong> (Texto hasta 255 caracteres) Descripción de la operación que será mostrada en el Checkout.</li>
-  <li><strong><em>return_url</em></strong> (FQDN) URL para retornar una vez finalizada la operación o si el usuario desea cancelar la misma.</li>
-  <li><strong><em>reference</em></strong> (Texto) Es una referencia que no será mostrada pero que le será útil para reconocer la operación en su sistema.</li>
+  <li><strong><em>total</em></strong> (Número: XXX.xx) Monto de la operación. Formato XXX.xx donde el <strong><em>PUNTO</em></strong> es el separador decimal.<br /></li>
+  <li><strong><em>description</em></strong> (Texto hasta 255 caracteres) Descripción de la operación que será mostrada en el Checkout.<br /></li>
+  <li><strong><em>return_url</em></strong> (FQDN) URL para retornar una vez finalizada la operación o si el usuario desea cancelar la misma.<br /></li>
+  <li><strong><em>reference</em></strong> (Texto) Es una referencia que no será mostrada pero que le será útil para reconocer la operación en su sistema.<br /></li>
 </ul>
 
-<p><strong>Opcionales</strong></p>
+<p><strong>Opcionales</strong><br /></p>
 <ul>
-  <li><strong><em>webhook</em></strong> (FQDN compatible con POST) URL que será invocada por Mobbex al finalizar la operación mediante <strong>POST</strong> y que recibirá todos los detalles sobre la operación procesada. El Webhook será invocado antes de realizarse la redirección. Tenga en cuenta que la URL utilizada debe ser capaz de recibir una llamada de Tipo POST de lo contrario Mobbex no será capaz de informarle sobre la misma.</li>
-  <li><strong><em>redirect</em></strong> (Boolean: true/false) permite la redirección automática al checkout al terminar la ejecución del POST sin intervención del usuario. (Por defecto es falso y siempre retorna la URL )</li>
+  <li><strong><em>webhook</em></strong> (FQDN compatible con POST) URL que será invocada por Mobbex al finalizar la operación mediante <strong>POST</strong> y que recibirá todos los detalles sobre la operación procesada. El Webhook será invocado antes de realizarse la redirección. Tenga en cuenta que la URL utilizada debe ser capaz de recibir una llamada de Tipo POST de lo contrario Mobbex no será capaz de informarle sobre la misma.<br /></li>
+  <li><strong><em>redirect</em></strong> (Boolean: true/false) permite la redirección automática al checkout al terminar la ejecución del POST sin intervención del usuario. (Por defecto es falso y siempre retorna la URL )<br /></li>
 </ul>
 
 <p><strong>CURL</strong></p>
-<div class="highlighter-rouge"><pre class="highlight"><code>curl --request POST \
+<pre><code>
+curl --request POST \
   --url https://mobbex.com/p/checkout/create \
   --header 'cache-control: no-cache' \
   --header 'content-type: multipart/form-data; \
@@ -114,73 +115,72 @@
   --form 'description=Some Description' \
   --form return_url=https://mobbex.com/finished
 </code></pre>
-</div>
 
 <p><strong>Javascript</strong></p>
-<div class="language-javascript highlighter-rouge"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">data</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">FormData</span><span class="p">();</span>
-<span class="nx">data</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"total"</span><span class="p">,</span> <span class="s2">"100"</span><span class="p">);</span>
-<span class="nx">data</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"reference"</span><span class="p">,</span> <span class="s2">"#MyImportantID"</span><span class="p">);</span>
-<span class="nx">data</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"description"</span><span class="p">,</span> <span class="s2">"Some Description"</span><span class="p">);</span>
-<span class="nx">data</span><span class="p">.</span><span class="nx">append</span><span class="p">(</span><span class="s2">"return_url"</span><span class="p">,</span> <span class="s2">"https://mobbex.com/finished"</span><span class="p">);</span>
-<span class="kd">var</span> <span class="nx">xhr</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">XMLHttpRequest</span><span class="p">();</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">withCredentials</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s2">"readystatechange"</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">readyState</span> <span class="o">===</span> <span class="mi">4</span><span class="p">)</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">responseText</span><span class="p">);</span>
-  <span class="p">}</span>
-<span class="p">});</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">open</span><span class="p">(</span><span class="s2">"POST"</span><span class="p">,</span> <span class="s2">"https://mobbex.com/p/checkout/create"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"x-api-key"</span><span class="p">,</span> <span class="s2">"zJ8LFTBX6Ba8D611e9io13fDZAwj0QmKO1Hn1yIj"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"x-access-token"</span><span class="p">,</span> <span class="s2">"d31f0721-2f85-44e7-bcc6-15e19d1a53cc"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">setRequestHeader</span><span class="p">(</span><span class="s2">"cache-control"</span><span class="p">,</span> <span class="s2">"no-cache"</span><span class="p">);</span>
-<span class="nx">xhr</span><span class="p">.</span><span class="nx">send</span><span class="p">(</span><span class="nx">data</span><span class="p">);</span>
+<pre><code>
+var data = new FormData();
+data.append("total", "100");
+data.append("reference", "#MyImportantID");
+data.append("description", "Some Description");
+data.append("return_url", "https://mobbex.com/finished");
+var xhr = new XMLHttpRequest();
+xhr.withCredentials = true;
+xhr.addEventListener("readystatechange", function () {
+  if (this.readyState === 4) {
+    console.log(this.responseText);
+  }
+});
+xhr.open("POST", "https://mobbex.com/p/checkout/create");
+xhr.setRequestHeader("x-api-key", "zJ8LFTBX6Ba8D611e9io13fDZAwj0QmKO1Hn1yIj");
+xhr.setRequestHeader("x-access-token", "d31f0721-2f85-44e7-bcc6-15e19d1a53cc");
+xhr.setRequestHeader("cache-control", "no-cache");
+xhr.send(data);
 </code></pre>
-</div>
 
 <p><strong>PHP</strong></p>
-<div class="language-php highlighter-rouge"><pre class="highlight"><code><span class="cp">&lt;?php</span>  
-<span class="nv">$request</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">HttpRequest</span><span class="p">();</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setUrl</span><span class="p">(</span><span class="s1">'https://mobbex.com/p/checkout/create'</span><span class="p">);</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setMethod</span><span class="p">(</span><span class="nx">HTTP_METH_POST</span><span class="p">);</span>  
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setHeaders</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
-  <span class="s1">'postman-token'</span> <span class="o">=&gt;</span> <span class="s1">'4533ef25-f802-5fcc-cc03-8cc45e14d3c6'</span><span class="p">,</span>
-  <span class="s1">'cache-control'</span> <span class="o">=&gt;</span> <span class="s1">'no-cache'</span><span class="p">,</span>
-  <span class="s1">'content-type'</span> <span class="o">=&gt;</span> <span class="s1">'application/x-www-form-urlencoded'</span><span class="p">,</span>
-  <span class="s1">'x-access-token'</span> <span class="o">=&gt;</span> <span class="s1">'d31f0721-2f85-44e7-bcc6-15e19d1a53cc'</span><span class="p">,</span>
-  <span class="s1">'x-api-key'</span> <span class="o">=&gt;</span> <span class="s1">'zJ8LFTBX6Ba8D611e9io13fDZAwj0QmKO1Hn1yIj'</span>
-<span class="p">));</span>  
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setContentType</span><span class="p">(</span><span class="s1">'application/x-www-form-urlencoded'</span><span class="p">);</span>
-<span class="nv">$request</span><span class="o">-&gt;</span><span class="na">setPostFields</span><span class="p">(</span><span class="k">array</span><span class="p">(</span>
-  <span class="s1">'total'</span> <span class="o">=&gt;</span> <span class="s1">'100'</span><span class="p">,</span>
-  <span class="s1">'reference'</span> <span class="o">=&gt;</span> <span class="s1">'#MyImportantID'</span><span class="p">,</span>
-  <span class="s1">'description'</span> <span class="o">=&gt;</span> <span class="s1">'Some Description'</span><span class="p">,</span>
-  <span class="s1">'return_url'</span> <span class="o">=&gt;</span> <span class="s1">'https://mobbex.com/finished'</span>
-<span class="p">));</span>  
-<span class="k">try</span> <span class="p">{</span>
-  <span class="nv">$response</span> <span class="o">=</span> <span class="nv">$request</span><span class="o">-&gt;</span><span class="na">send</span><span class="p">();</span>    
-  <span class="k">echo</span> <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">getBody</span><span class="p">();</span>
-<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">HttpException</span> <span class="nv">$ex</span><span class="p">)</span> <span class="p">{</span>
-  <span class="k">echo</span> <span class="nv">$ex</span><span class="p">;</span>
-<span class="p">}</span>
+<pre><code>
+&lt;?php  
+$request = new HttpRequest();
+$request-&gt;setUrl('https://mobbex.com/p/checkout/create');
+$request-&gt;setMethod(HTTP_METH_POST);  
+$request-&gt;setHeaders(array(
+  'postman-token' =&gt; '4533ef25-f802-5fcc-cc03-8cc45e14d3c6',
+  'cache-control' =&gt; 'no-cache',
+  'content-type' =&gt; 'application/x-www-form-urlencoded',
+  'x-access-token' =&gt; 'd31f0721-2f85-44e7-bcc6-15e19d1a53cc',
+  'x-api-key' =&gt; 'zJ8LFTBX6Ba8D611e9io13fDZAwj0QmKO1Hn1yIj'
+));  
+$request-&gt;setContentType('application/x-www-form-urlencoded');
+$request-&gt;setPostFields(array(
+  'total' =&gt; '100',
+  'reference' =&gt; '#MyImportantID',
+  'description' =&gt; 'Some Description',
+  'return_url' =&gt; 'https://mobbex.com/finished'
+));  
+try {
+  $response = $request-&gt;send();    
+  echo $response-&gt;getBody();
+} catch (HttpException $ex) {
+  echo $ex;
+}
 </code></pre>
-</div>
 
 <h4 id="respuesta">Respuesta:</h4>
 
 <p>Tenga en cuenta que las respuestas del servicio siempre serán en formato JSON. El servicio sólo contestará si <strong>redirect</strong> no fue utilizado o si el mismo se colocó en “false”</p>
 
 <p><strong>JSON</strong></p>
-<div class="language-json highlighter-rouge"><pre class="highlight"><code><span class="p">{</span><span class="w">
-  </span><span class="nt">"result"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span><span class="p">,</span><span class="w">
-  </span><span class="nt">"data"</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w">
-    </span><span class="nt">"id"</span><span class="p">:</span><span class="w"> </span><span class="s2">"rytPr_gSe"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"url"</span><span class="p">:</span><span class="w"> </span><span class="s2">"https://mobbex.com/p/checkout/view/rytPr_gSe"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"description"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Some Description"</span><span class="p">,</span><span class="w">
-    </span><span class="nt">"total"</span><span class="p">:</span><span class="w"> </span><span class="mi">100</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre>
-</div>
+<pre><code>
+{
+  "result": true,
+  "data": {
+    "id": "rytPr_gSe",
+    "url": "https://mobbex.com/p/checkout/view/rytPr_gSe",
+    "description": "Some Description",
+    "total": 100
+  }
+}
+</code></pre>
 
 <p>Como desarrollador deberá redireccionar el sitio web a la url proporcionada en la respuesta de nuestro servicio.</p>
 
