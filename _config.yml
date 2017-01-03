@@ -9,7 +9,7 @@ author: Mobbex, Co
 
 # Homepage tiles
 tiles-source: posts # accepts "posts" or "pages"
-tiles-count: 4
+tiles-count: 5
 
 # Social settings
 facebook_url: https://facebook.com/mobbex
