@@ -6,7 +6,9 @@ description: Utiliza las tarjetas de prueba para comprobar el correcto funcionam
 
 #### Mobbex Credit
 
+<div class="box">
 <span class="icon fa-exclamation-triangle"> </span> Esta tarjeta es exclusivamente para pruebas y debe ser desactivada antes de ingresar a producción.
+</div>
 
 Tarjeta: 1111222233334444<br/>
 Código de Seguridad: 123<br/>
@@ -20,7 +22,7 @@ _En todas las tarjetas de prueba el Código de seguridad y Fecha deben ser el mi
 
 Tarjeta: 4507-9900-0000-0010<br/>
 Codigo de seguridad: 125<br/>
-Vencimiento: 12/2016<br/>
+Vencimiento: 12/2017<br/>
 
 | Nro de Tarjeta | Respuesta |
 | --- | --- | --- |
@@ -50,9 +52,9 @@ __Ejemplo__
 
 _En todas las tarjetas de prueba el Código de seguridad y Fecha deben ser el mismo_
 
-Tarjeta: 5323629993121008<br/>
+Tarjeta: 5323-6299-9312-1008<br/>
 Codigo de seguridad: 617<br/>
-Vencimiento: 12/2016<br/>
+Vencimiento: 12/2017<br/>
 
 | Nro de Tarjeta | Respuesta |
 | --- | --- | --- |
@@ -66,3 +68,27 @@ Vencimiento: 12/2016<br/>
 5323332220000000 | 61
 5323432220000008 | 80
 5323532220000005 | 45
+
+---
+
+#### AMERICAN EXPRESS
+
+__Ejemplo__
+
+_En todas las tarjetas de prueba el Código de seguridad y Fecha deben ser el mismo_
+
+Tarjeta: 3764-1123-4531-007<br/>
+Codigo de seguridad: 1234<br/>
+Vencimiento: 12/2017<br/>
+
+| Nro de Tarjeta | Respuesta |
+| --- | --- | --- |
+375645646328764 | 05
+370932559974742 | 03
+376911234531006 | 30
+376811234531008 | 54
+376711234531000 | 65
+376011234531005 | 14
+377285089067575 | 47
+376611234531002 | 80
+376511234531004 | 45

@@ -35,7 +35,7 @@ _Opcionales_<br/>
 - ___capture___: este parámetro permite generar una orden de pago en modo Autorización, las ordenes de pago del tipo Autorización deberán ser capturadas desde el panel administrativo. (Defecto: true)<br/>
 
 __CURL__
-<pre><code>
+<pre><code class="bash">
 curl --request POST \
   --url https://mobbex.com/p/payment_order/create \
   --header 'cache-control: no-cache' \
@@ -74,7 +74,6 @@ $request = new HttpRequest();
 $request->setUrl('https://mobbex.com/p/payment_order/create');
 $request->setMethod(HTTP_METH_POST);  
 $request->setHeaders(array(
-  'postman-token' => '4533ef25-f802-5fcc-cc03-8cc45e14d3c6',
   'cache-control' => 'no-cache',
   'content-type' => 'application/x-www-form-urlencoded',
   'x-access-token' => 'd31f0721-2f85-44e7-bcc6-15e19d1a53cc',

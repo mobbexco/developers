@@ -31,7 +31,7 @@ __Opcionales__<br/>
 - ___redirect___ (Boolean: true/false) permite la redirección automática al checkout al terminar la ejecución del POST sin intervención del usuario. (Por defecto es falso y siempre retorna la URL )<br/>
 
 __CURL__
-<pre><code>
+<pre><code class="bash">
 curl --request POST \
   --url https://mobbex.com/p/checkout/create \
   --header 'cache-control: no-cache' \
@@ -110,13 +110,21 @@ __JSON__
 }
 </code></pre>
 
-Como desarrollador deberá redireccionar el sitio web a la url proporcionada en la respuesta de nuestro servicio.
+**Importante**  
+Si no se provee el parámetro "redirect" como true, como desarrollador deberá redireccionar el sitio web a la url proporcionada en la respuesta de nuestro servicio. Si Redirect es "true" será redireccionado automáticamente.
 
 #### Transacción finalizada/cancelada
 
-Si se define el parámetro ```return_url``` el servicio redireccionará a la URL provista mediante HTTP Get, a esta url se le agregará el Estado de la misma mediante el parámetro ```status```
+Si se define el parámetro ```return_url``` el servicio redireccionará a la URL provista mediante HTTP Get, a esta url se le agregará el Estado de la misma mediante el parámetro ```status``` y el tipo de transacción generada por el usuario mediante el parámetro ```type``` (cash/card).
 
 Ejemplo:
-```https://mobbex.com/thank_you?status=200```
+```https://mobbex.com/thank_you?status=200&type=cash```
 
-Referencia de los Estados posibles: <a href="{{ "statuses" | absolute_url }}">Estados</a>
+
+**Casos especiales**  
+Si el usuario cancela la operación ```status``` será ```0``` y ```type``` será ```none```. Esto como se señala indica que el usuario no finalizó la operación y decidió volver al sitio.
+
+Ejemplo:
+```https://mobbex.com/thank_you?status=0&type=none```
+
+Referencia de los Estados posibles: <a href="{{ "statuses" | absolute_url }}">Estados y Tipos de Transacción</a>. Es ***muy importante*** revisar la documentación sobre estados y tipos de documentación ya que el manejo de los mismos será utilizado durante la homologación del comercio.

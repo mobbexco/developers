@@ -14,6 +14,11 @@
 	<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css" />
 	<!--[if lte IE 9]><link rel="stylesheet" href="http://localhost:4000/assets/css/ie9.css" /><![endif]-->
 	<!--[if lte IE 8]><link rel="stylesheet" href="http://localhost:4000/assets/css/ie8.css" /><![endif]-->
+
+	<!-- Syntax Highlighting -->
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/obsidian.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
 </head>
 
 
@@ -35,6 +40,8 @@
 	<ul class="links">
         
 		    
+		
+		    
 		        <li><a href="http://localhost:4000/">Inicio</a></li>
 	    	
 		
@@ -42,15 +49,25 @@
 		
 		    
 		
+		    
 		
+		
+		    
+		        <li><a href="http://localhost:4000/homologacion.html">Homologación</a></li>
 		    
 		
 		    
-		        <li><a href="http://localhost:4000/statuses.html">Estados</a></li>
+		
+		    
+		        <li><a href="http://localhost:4000/statuses.html">Datos de Transacción</a></li>
 		    
 		
 		    
 		        <li><a href="http://localhost:4000/testcards.html">Tarjetas de Prueba</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/webhooks.html">Webhooks</a></li>
 		    
 		
 	</ul>
@@ -68,61 +85,63 @@
 <section id="one">
 	<div class="inner">
 		<header class="major">
-			<h1>WebCheckout</h1>
+			<h1>Ordenes de Pago</h1>
 		</header>
 		
-		<p><p>Para crear un checkout es necesario poseer un API Key y un Access Token. Para obtenerlos se deben seguir los siguientes pasos</p>
+		<p><div>
+  <p>Para crear una Orden de Pago es necesario poseer un API Key y un Access Token. Para obtenerlos se deben seguir los siguientes pasos</p>
 
-<p>1) Ingresar a https://mobbex.com/console<br />
+  <p>1) Ingresar a https://mobbex.com/console<br />
 2) Dirigirse desde el menú superior a “Desarrollador”<br />
 3) Crear una nueva aplicación o utilizar una existente<br />
 4) Obtener el acceso a una Entidad mediante la opción “Solicitar Acceso” o utilizar un acceso ya concedido mostrado en el listado de “Entidades Autorizadas”<br /></p>
 
-<p>Habiendo obtenido ambos keys se puede proceder a generar la solicitud para crear un Checkout. Algunos ejemplos a continuación.</p>
+  <p>Habiendo obtenido ambos keys se puede proceder a generar la solicitud para crear una Orden de Pago. Algunos ejemplos a continuación.</p>
 
-<h4 id="cabeceras-headers">Cabeceras (Headers)</h4>
-<ul>
-  <li><strong><em>x-api-key</em></strong>: Clave API de su aplicación<br /></li>
-  <li><strong><em>x-access-token</em></strong>: Token de Acceso a la entidad para la cual desea realizar la operación.<br /></li>
-</ul>
+  <h4 id="url">URL</h4>
+  <div class="highlighter-rouge"><pre class="highlight"><code>https://mobbex.com/p/payment_order/create
+</code></pre>
+  </div>
 
-<h4 id="parametros-post-params">Parametros (POST Params)</h4>
+  <h4 id="cabeceras-headers">Cabeceras (Headers)</h4>
+  <ul>
+    <li><strong><em>x-api-key</em></strong>: Clave API de su aplicación</li>
+    <li><strong><em>x-access-token</em></strong>: Token de Acceso a la entidad para la cual desea realizar la operación.</li>
+  </ul>
 
-<p><strong>Requeridos</strong><br /></p>
-<ul>
-  <li><strong><em>total</em></strong> (Número: XXX.xx) Monto de la operación. Formato XXX.xx donde el <strong><em>PUNTO</em></strong> es el separador decimal.<br /></li>
-  <li><strong><em>description</em></strong> (Texto hasta 255 caracteres) Descripción de la operación que será mostrada en el Checkout.<br /></li>
-  <li><strong><em>return_url</em></strong> (FQDN) URL para retornar una vez finalizada la operación o si el usuario desea cancelar la misma.<br /></li>
-  <li><strong><em>reference</em></strong> (Texto) Es una referencia que no será mostrada pero que le será útil para reconocer la operación en su sistema.<br /></li>
-</ul>
+  <h4 id="parametros-post-params">Parametros (POST Params)</h4>
 
-<p><strong>Opcionales</strong><br /></p>
-<ul>
-  <li><strong><em>webhook</em></strong> (FQDN compatible con POST) URL que será invocada por Mobbex al finalizar la operación mediante <strong>POST</strong> y que recibirá todos los detalles sobre la operación procesada. El Webhook será invocado antes de realizarse la redirección. Tenga en cuenta que la URL utilizada debe ser capaz de recibir una llamada de Tipo POST de lo contrario Mobbex no será capaz de informarle sobre la misma.<br /></li>
-  <li><strong><em>redirect</em></strong> (Boolean: true/false) permite la redirección automática al checkout al terminar la ejecución del POST sin intervención del usuario. (Por defecto es falso y siempre retorna la URL )<br /></li>
-</ul>
+  <p><em>Requeridos</em><br /></p>
+  <ul>
+    <li><strong><em>total</em></strong>: Monto de la operación. Formato XXX.xx donde el <strong><em>PUNTO</em></strong> es el separador decimal.<br /></li>
+    <li><strong><em>description</em></strong>: Descripción de la operación que será mostrada en el Checkout.<br /></li>
+    <li><strong><em>email</em></strong>: El email al cual será enviada la orden de pago generada.<br /></li>
+  </ul>
 
-<p><strong>CURL</strong></p>
-<pre><code>
+  <p><em>Opcionales</em><br /></p>
+  <ul>
+    <li><strong><em>capture</em></strong>: este parámetro permite generar una orden de pago en modo Autorización, las ordenes de pago del tipo Autorización deberán ser capturadas desde el panel administrativo. (Defecto: true)<br /></li>
+  </ul>
+
+  <p><strong>CURL</strong></p>
+  <pre><code class="bash">
 curl --request POST \
-  --url https://mobbex.com/p/checkout/create \
+  --url https://mobbex.com/p/payment_order/create \
   --header 'cache-control: no-cache' \
   --header 'content-type: multipart/form-data; \
   --header 'x-api-key: zJ8LFTBX6Ba8D611e9io13fDZAwj0QmKO1Hn1yIj' \
   --header 'x-access-token: d31f0721-2f85-44e7-bcc6-15e19d1a53cc' \
   --form total=100 \
-  --form 'reference=#MyImportantID' \
-  --form 'description=Some Description' \
-  --form return_url=https://mobbex.com/finished
+  --form 'email=some@email.com' \
+  --form 'description=Some Description'
 </code></pre>
 
-<p><strong>Javascript</strong></p>
-<pre><code>
+  <p><strong>Javascript</strong></p>
+  <pre><code>
 var data = new FormData();
 data.append("total", "100");
-data.append("reference", "#MyImportantID");
+data.append("email", "some@email.com");
 data.append("description", "Some Description");
-data.append("return_url", "https://mobbex.com/finished");
 var xhr = new XMLHttpRequest();
 xhr.withCredentials = true;
 xhr.addEventListener("readystatechange", function () {
@@ -130,21 +149,20 @@ xhr.addEventListener("readystatechange", function () {
     console.log(this.responseText);
   }
 });
-xhr.open("POST", "https://mobbex.com/p/checkout/create");
+xhr.open("POST", "https://mobbex.com/p/payment_order/create");
 xhr.setRequestHeader("x-api-key", "zJ8LFTBX6Ba8D611e9io13fDZAwj0QmKO1Hn1yIj");
 xhr.setRequestHeader("x-access-token", "d31f0721-2f85-44e7-bcc6-15e19d1a53cc");
 xhr.setRequestHeader("cache-control", "no-cache");
 xhr.send(data);
 </code></pre>
 
-<p><strong>PHP</strong></p>
-<pre><code>
+  <p><strong>PHP</strong></p>
+  <pre><code>
 &lt;?php  
 $request = new HttpRequest();
-$request-&gt;setUrl('https://mobbex.com/p/checkout/create');
+$request-&gt;setUrl('https://mobbex.com/p/payment_order/create');
 $request-&gt;setMethod(HTTP_METH_POST);  
 $request-&gt;setHeaders(array(
-  'postman-token' =&gt; '4533ef25-f802-5fcc-cc03-8cc45e14d3c6',
   'cache-control' =&gt; 'no-cache',
   'content-type' =&gt; 'application/x-www-form-urlencoded',
   'x-access-token' =&gt; 'd31f0721-2f85-44e7-bcc6-15e19d1a53cc',
@@ -153,9 +171,8 @@ $request-&gt;setHeaders(array(
 $request-&gt;setContentType('application/x-www-form-urlencoded');
 $request-&gt;setPostFields(array(
   'total' =&gt; '100',
-  'reference' =&gt; '#MyImportantID',
-  'description' =&gt; 'Some Description',
-  'return_url' =&gt; 'https://mobbex.com/finished'
+  'email' =&gt; 'some@email.com',
+  'description' =&gt; 'Some Description'
 ));  
 try {
   $response = $request-&gt;send();    
@@ -165,33 +182,27 @@ try {
 }
 </code></pre>
 
-<h4 id="respuesta">Respuesta:</h4>
+  <h4 id="respuesta">Respuesta:</h4>
 
-<p>Tenga en cuenta que las respuestas del servicio siempre serán en formato JSON. El servicio sólo contestará si <strong>redirect</strong> no fue utilizado o si el mismo se colocó en “false”</p>
+  <p>Tenga en cuenta que las respuestas del servicio siempre serán en formato JSON.</p>
 
-<p><strong>JSON</strong></p>
-<pre><code>
+  <p><strong>JSON</strong></p>
+  <pre><code>
 {
-  "result": true,
-  "data": {
-    "id": "rytPr_gSe",
-    "url": "https://mobbex.com/p/checkout/view/rytPr_gSe",
-    "description": "Some Description",
-    "total": 100
-  }
+  "__v": 0,
+  "identifier": "some-description",
+  "updated": "2016-12-28T00:15:54.380Z",
+  "created": "2016-12-28T00:15:54.380Z",
+  "email": "admin@mobbex.com",
+  "description": "Some Description",
+  "amount": 100,
+  "entity": "5761a3dd8aad6c120042b287",
+  "capture": true,
+  "uid": "SJMHEKxSl",
+  "_id": "5863043abfa789000f941f58"
 }
 </code></pre>
-
-<p>Como desarrollador deberá redireccionar el sitio web a la url proporcionada en la respuesta de nuestro servicio.</p>
-
-<h4 id="transacción-finalizadacancelada">Transacción finalizada/cancelada</h4>
-
-<p>Si se define el parámetro <code class="highlighter-rouge">return_url</code> el servicio redireccionará a la URL provista mediante HTTP Get, a esta url se le agregará el Estado de la misma mediante el parámetro <code class="highlighter-rouge">status</code></p>
-
-<p>Ejemplo:
-<code class="highlighter-rouge">https://mobbex.com/thank_you?status=200</code></p>
-
-<p>Referencia de los Estados posibles: <a href="http://localhost:4000/statuses">Estados</a></p>
+</div>
 </p>
 	</div>
 </section>
@@ -262,6 +273,11 @@ try {
 				
 				<li><a href="https://github.com/mobbexco" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
 				
+			</ul>
+			<ul class="copyright">
+				<li>&copy; Mobbex Developer Site</li>
+				<li><a href="https://mobbex.freshdesk.com" target="_blank">Soporte Mobbex</a></li>
+				<li><a href="mailto:support@mobbex.com" target="_blank">support@mobbex.com</a></li>
 			</ul>
 		</div>
 	</footer>

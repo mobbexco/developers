@@ -14,6 +14,11 @@
 	<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css" />
 	<!--[if lte IE 9]><link rel="stylesheet" href="http://localhost:4000/assets/css/ie9.css" /><![endif]-->
 	<!--[if lte IE 8]><link rel="stylesheet" href="http://localhost:4000/assets/css/ie8.css" /><![endif]-->
+
+	<!-- Syntax Highlighting -->
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/obsidian.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
 </head>
 
 
@@ -35,6 +40,8 @@
 	<ul class="links">
         
 		    
+		
+		    
 		        <li><a href="http://localhost:4000/">Inicio</a></li>
 	    	
 		
@@ -42,15 +49,25 @@
 		
 		    
 		
+		    
 		
+		
+		    
+		        <li><a href="http://localhost:4000/homologacion.html">Homologación</a></li>
 		    
 		
 		    
-		        <li><a href="http://localhost:4000/statuses.html">Estados</a></li>
+		
+		    
+		        <li><a href="http://localhost:4000/statuses.html">Datos de Transacción</a></li>
 		    
 		
 		    
 		        <li><a href="http://localhost:4000/testcards.html">Tarjetas de Prueba</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/webhooks.html">Webhooks</a></li>
 		    
 		
 	</ul>
@@ -87,8 +104,8 @@
                         <img src="" alt="" />
                 </span>
                 <header class="major">
-                        <h3><a href="/2017/01/03/plugins.html" class="link">Plugins para e-commerce</a></h3>
-                        <p>Aquí encontrarás nuestros plugins para plataformas de e-commerce</p>
+                        <h3><a href="/2017/04/10/webcheckout.html" class="link">WebCheckout</a></h3>
+                        <p>Cómo crear un checkout utilizando Mobbex</p>
                 </header>
         </article>
 	
@@ -99,8 +116,32 @@
                         <img src="" alt="" />
                 </span>
                 <header class="major">
-                        <h3><a href="/2016/12/30/webcheckout.html" class="link">WebCheckout</a></h3>
-                        <p>Cómo crear un checkout utilizando Mobbex</p>
+                        <h3><a href="/2017/04/10/transaction.html" class="link">Transacciones</a></h3>
+                        <p>Cómo obtener detalles de una Transacción mediante su Referencia</p>
+                </header>
+        </article>
+	
+	
+	
+        <article>
+                <span class="image">
+                        <img src="" alt="" />
+                </span>
+                <header class="major">
+                        <h3><a href="/2017/04/10/paymentorders.html" class="link">Ordenes de Pago</a></h3>
+                        <p>Crea órdenes de pago desde tu servicio</p>
+                </header>
+        </article>
+	
+	
+	
+        <article>
+                <span class="image">
+                        <img src="" alt="" />
+                </span>
+                <header class="major">
+                        <h3><a href="/2017/01/03/plugins.html" class="link">Plugins para e-commerce</a></h3>
+                        <p>Aquí encontrarás nuestros plugins para plataformas de e-commerce</p>
                 </header>
         </article>
 	
@@ -118,27 +159,7 @@
 	
 	
 	
-        <article>
-                <span class="image">
-                        <img src="" alt="" />
-                </span>
-                <header class="major">
-                        <h3><a href="/2016/12/30/paymentorders.html" class="link">Ordenes de Pago</a></h3>
-                        <p>Crea órdenes de pago desde tu servicio</p>
-                </header>
-        </article>
 	
-	
-	
-        <article>
-                <span class="image">
-                        <img src="" alt="" />
-                </span>
-                <header class="major">
-                        <h3><a href="/2016/12/30/mobbexjs.html" class="link">Mobbex.JS</a></h3>
-                        <p>Implementa nuestra libreria y consume nuestro servicio de manera avanzada.</p>
-                </header>
-        </article>
 	
 	
 	
@@ -152,18 +173,17 @@
 
 
         <!-- Two -->
-        <!--<section id="two">
+        <section id="two">
             <div class="inner">
                 <header class="major">
-                    <h2>Massa libero</h2>
+                    <h2>Reporte de Errores o Mejoras</h2>
                 </header>
-                <p>
-</p>
+                <p>Si encuentra algún error en nuestra documentación o bien quiere proponernos una mejora, por favor cree un ticket en nuestra plataforma de soporte haciendo click en el siguiente link</p>
                 <ul class="actions">
-                    <li><a href="landing.html" class="button next">Get Started</a></li>
+                    <li><a href="https://mobbex.freshdesk.com/support/tickets/new" target="_blank" class="button next">Crear ticket</a></li>
                 </ul>
             </div>
-        </section>-->
+        </section>
 
     </div>
 
@@ -231,6 +251,11 @@
 				
 				<li><a href="https://github.com/mobbexco" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
 				
+			</ul>
+			<ul class="copyright">
+				<li>&copy; Mobbex Developer Site</li>
+				<li><a href="https://mobbex.freshdesk.com" target="_blank">Soporte Mobbex</a></li>
+				<li><a href="mailto:support@mobbex.com" target="_blank">support@mobbex.com</a></li>
 			</ul>
 		</div>
 	</footer>

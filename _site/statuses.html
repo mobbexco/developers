@@ -14,6 +14,11 @@
 	<link rel="stylesheet" href="http://localhost:4000/assets/css/main.css" />
 	<!--[if lte IE 9]><link rel="stylesheet" href="http://localhost:4000/assets/css/ie9.css" /><![endif]-->
 	<!--[if lte IE 8]><link rel="stylesheet" href="http://localhost:4000/assets/css/ie8.css" /><![endif]-->
+
+	<!-- Syntax Highlighting -->
+	<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/styles/obsidian.min.css">
+	<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.10.0/highlight.min.js"></script>
+	<script>hljs.initHighlightingOnLoad();</script>
 </head>
 
 
@@ -35,6 +40,8 @@
 	<ul class="links">
         
 		    
+		
+		    
 		        <li><a href="http://localhost:4000/">Inicio</a></li>
 	    	
 		
@@ -42,15 +49,25 @@
 		
 		    
 		
+		    
 		
+		
+		    
+		        <li><a href="http://localhost:4000/homologacion.html">Homologación</a></li>
 		    
 		
 		    
-		        <li><a href="http://localhost:4000/statuses.html">Estados</a></li>
+		
+		    
+		        <li><a href="http://localhost:4000/statuses.html">Datos de Transacción</a></li>
 		    
 		
 		    
 		        <li><a href="http://localhost:4000/testcards.html">Tarjetas de Prueba</a></li>
+		    
+		
+		    
+		        <li><a href="http://localhost:4000/webhooks.html">Webhooks</a></li>
 		    
 		
 	</ul>
@@ -139,6 +156,44 @@
 </div>
 </section>
 
+<!-- One -->
+<section id="one">
+	<div class="inner">
+		<header class="major">
+			<h1>Tipos de Transacción</h1>
+		</header>
+
+<div>
+        <p>Tipos de una transacción en Mobbex:</p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Especificación</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>cash</td>
+              <td>Transacción de tipo Efectivo</td>
+            </tr>
+            <tr>
+              <td>card</td>
+              <td>Transacción realizada mediante tarjeta de débito o crédito</td>
+            </tr>
+            <tr>
+              <td>banktransfer</td>
+              <td>Transacción realizada mediante Transferencia Bancaria</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </div>
+
+</div>
+</section>
+
 </div>
  <!-- Contact -->
 <!--<section id="contact">
@@ -204,6 +259,11 @@
 				
 				<li><a href="https://github.com/mobbexco" class="icon alt fa-github" target="_blank"><span class="label">GitHub</span></a></li>
 				
+			</ul>
+			<ul class="copyright">
+				<li>&copy; Mobbex Developer Site</li>
+				<li><a href="https://mobbex.freshdesk.com" target="_blank">Soporte Mobbex</a></li>
+				<li><a href="mailto:support@mobbex.com" target="_blank">support@mobbex.com</a></li>
 			</ul>
 		</div>
 	</footer>

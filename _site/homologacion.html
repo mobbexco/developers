@@ -75,242 +75,41 @@
 		<!--<li><a href="#" class="button special fit">Get Started</a></li>-->
 		<li><a href="https://mobbex.com/console" target="_blank" class="button fit">Ingresar</a></li>
 	</ul>
-</nav> 
-    
-    
-<!-- Main -->
+</nav> <!-- Main -->
 <div id="main" class="alt">
 
 <!-- One -->
 <section id="one">
 	<div class="inner">
 		<header class="major">
-			<h1>Tarjetas de Prueba</h1>
+			<h1>Homologación</h1>
 		</header>
-		
-		<p><h4 id="mobbex-credit">Mobbex Credit</h4>
 
-<div class="box">
-<span class="icon fa-exclamation-triangle"> </span> Esta tarjeta es exclusivamente para pruebas y debe ser desactivada antes de ingresar a producción.
+<div>
+
+        <p><strong><em>Qué es la homologación</em></strong><br />
+En Argentina para poder operar con Tarjetas de Crédito es necesario un proceso de homologación previo a comenzar a operar. Mobbex le provee de todos los recursos necesarios para cumplir con la misma pero deberá hacer ciertas modificaciones en su web para cumplir con pasos donde Mobbex no puede inferir.</p>
+
+        <p><strong><em>Requerimientos</em></strong></p>
+        <ul>
+          <li>Si un proceso de pago es cancelado el usuario no debe ver ninguna pantalla que indique que la operación fue exitosa (Ver Estados en Detalles).</li>
+          <li>Si la operación fue rechazadas al ser procesada con tarjeta el usuario debe recibir una pantalla adecuada al error notificado por la entidad procesante. (Ver Estados y Tipos en Detalles).</li>
+          <li>Si la operación es exitosa por el contrario deben seguirse los pasos adecuados para que su cliente obtenga el bien o servicio adquirido.</li>
+          <li>Se deberá generar un manual para conocer la operatoria mínima en el sitio web.</li>
+        </ul>
+
+        <p><strong><em>Más Detalles</em></strong></p>
+        <ul>
+          <li><a href="http://localhost:4000/statuses">Estados y Tipos de Transacción</a></li>
+        </ul>
+
+      </div>
+
 </div>
-
-<p>Tarjeta: 1111222233334444<br />
-Código de Seguridad: 123<br />
-Vencimiento: 12/22</p>
-
-<h4 id="visa">VISA</h4>
-
-<p><strong>Ejemplo</strong></p>
-
-<p><em>En todas las tarjetas de prueba el Código de seguridad y Fecha deben ser el mismo</em></p>
-
-<p>Tarjeta: 4507-9900-0000-0010<br />
-Codigo de seguridad: 125<br />
-Vencimiento: 12/2017<br /></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nro de Tarjeta</th>
-      <th>Respuesta</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>4507910000000018</td>
-      <td>05</td>
-    </tr>
-    <tr>
-      <td>4507920000000017</td>
-      <td>39</td>
-    </tr>
-    <tr>
-      <td>4507930000000016</td>
-      <td>51</td>
-    </tr>
-    <tr>
-      <td>4507940000000015</td>
-      <td>03</td>
-    </tr>
-    <tr>
-      <td>4507950000000014</td>
-      <td>30</td>
-    </tr>
-    <tr>
-      <td>4507960000000013</td>
-      <td>54</td>
-    </tr>
-    <tr>
-      <td>4507970000000012</td>
-      <td>43</td>
-    </tr>
-    <tr>
-      <td>4507980000000011</td>
-      <td>56</td>
-    </tr>
-    <tr>
-      <td>4507190000000090</td>
-      <td>65</td>
-    </tr>
-    <tr>
-      <td>4507290000000080</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <td>4507390000000070</td>
-      <td>47</td>
-    </tr>
-    <tr>
-      <td>4507490000000060</td>
-      <td>61</td>
-    </tr>
-    <tr>
-      <td>4507590000000059</td>
-      <td>80</td>
-    </tr>
-    <tr>
-      <td>4507690000000016</td>
-      <td>45</td>
-    </tr>
-    <tr>
-      <td>4508690000000015</td>
-      <td>41</td>
-    </tr>
-    <tr>
-      <td>4012001037141112</td>
-      <td>01</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h4 id="mastercard">MASTERCARD</h4>
-
-<p><strong>Ejemplo</strong></p>
-
-<p><em>En todas las tarjetas de prueba el Código de seguridad y Fecha deben ser el mismo</em></p>
-
-<p>Tarjeta: 5323-6299-9312-1008<br />
-Codigo de seguridad: 617<br />
-Vencimiento: 12/2017<br /></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nro de Tarjeta</th>
-      <th>Respuesta</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>5323620000000004</td>
-      <td>39</td>
-    </tr>
-    <tr>
-      <td>5323622000000000</td>
-      <td>51</td>
-    </tr>
-    <tr>
-      <td>5323622200000008</td>
-      <td>30</td>
-    </tr>
-    <tr>
-      <td>5323622220000004</td>
-      <td>54</td>
-    </tr>
-    <tr>
-      <td>5323222220000003</td>
-      <td>43</td>
-    </tr>
-    <tr>
-      <td>5323212220000004</td>
-      <td>56</td>
-    </tr>
-    <tr>
-      <td>5323232220000002</td>
-      <td>47</td>
-    </tr>
-    <tr>
-      <td>5323332220000000</td>
-      <td>61</td>
-    </tr>
-    <tr>
-      <td>5323432220000008</td>
-      <td>80</td>
-    </tr>
-    <tr>
-      <td>5323532220000005</td>
-      <td>45</td>
-    </tr>
-  </tbody>
-</table>
-
-<hr />
-
-<h4 id="american-express">AMERICAN EXPRESS</h4>
-
-<p><strong>Ejemplo</strong></p>
-
-<p><em>En todas las tarjetas de prueba el Código de seguridad y Fecha deben ser el mismo</em></p>
-
-<p>Tarjeta: 3764-1123-4531-007<br />
-Codigo de seguridad: 1234<br />
-Vencimiento: 12/2017<br /></p>
-
-<table>
-  <thead>
-    <tr>
-      <th>Nro de Tarjeta</th>
-      <th>Respuesta</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>375645646328764</td>
-      <td>05</td>
-    </tr>
-    <tr>
-      <td>370932559974742</td>
-      <td>03</td>
-    </tr>
-    <tr>
-      <td>376911234531006</td>
-      <td>30</td>
-    </tr>
-    <tr>
-      <td>376811234531008</td>
-      <td>54</td>
-    </tr>
-    <tr>
-      <td>376711234531000</td>
-      <td>65</td>
-    </tr>
-    <tr>
-      <td>376011234531005</td>
-      <td>14</td>
-    </tr>
-    <tr>
-      <td>377285089067575</td>
-      <td>47</td>
-    </tr>
-    <tr>
-      <td>376611234531002</td>
-      <td>80</td>
-    </tr>
-    <tr>
-      <td>376511234531004</td>
-      <td>45</td>
-    </tr>
-  </tbody>
-</table>
-</p>
-	</div>
 </section>
 
 </div>
-
-    <!-- Contact -->
+ <!-- Contact -->
 <!--<section id="contact">
 	<div class="inner">
 		<section>
